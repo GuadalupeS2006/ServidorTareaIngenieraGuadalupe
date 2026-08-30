@@ -1,4 +1,5 @@
-import json
+
+    import json
 from wsgiref.simple_server import make_server
 
 tasks = {}
@@ -37,7 +38,7 @@ def app(environ, start_response):
 
         #DEVUELVE TAREA Y SU ID
 
-        response_body = json.dumps({"id":new_id, "tarea":data})
+        response_body = json.dumps({"id":new_id, "Tarea":data})
         status = "201 created "
         headers = [("Content-Type", "application/json")]
         start_response(status, headers)
@@ -61,7 +62,7 @@ def app(environ, start_response):
                 status = "404 Not Found"
                 headers = [("Content-Type", "application/json")]
                 start_response(status, headers)
-                return [json.dumps({"error": "No se ha encontrado la tarea"}).encode("utf-8")]
+                return [json.dumps({"error": "No se ha encontrado la tarea!"}).encode("utf-8")]
 
         if metodo == "DELETE":
            
@@ -71,13 +72,13 @@ def app(environ, start_response):
                 status = "200 OK"
                 headers = [("Content-Type", "application/json")]
                 start_response(status, headers)
-                return [json.dumps({"mensaje":"Tarea eliminada","tarea": tarea_delete }).encode("utf-8")]
+                return [json.dumps({"Mensaje":"Tarea eliminada","Tarea": tarea_delete }).encode("utf-8")]
             else:
                 #NO EXISTE
                     status = "404 Not Found"
                     headers = [("Content-Type", "application/json")]
                     start_response(status, headers)
-                    return [json.dumps({"error": "No se pudo eliminar la tarea"}).encode("utf-8")]
+                    return [json.dumps({"error": "¡¡¡¡No se pudo eliminar la tarea!!!!"}).encode("utf-8")]
 
         if metodo == "PATCH":
             #BUSCAR ID
@@ -98,7 +99,7 @@ def app(environ, start_response):
                 status = "404 Not Found"
                 headers = [("Content-Type", "application/json")]
                 start_response(status, headers)
-                return [json.dumps({"error": "No se ha encontrado la tarea"}).encode("utf-8")]
+                return [json.dumps({"error": "¡¡¡¡No se ha encontrado la tarea!!!!"}).encode("utf-8")]
             
     #OTRO
     else:
